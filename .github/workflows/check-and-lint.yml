@@ -5,7 +5,7 @@ on:
       #- main
       - development
 
-name: Check and Lint
+name: Check and Lint 
 
 jobs:
   check:
