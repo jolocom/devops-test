@@ -1,9 +1,20 @@
 on:
-  pull_request:
-  push:
-    branches:
-      #- main
-      - development
+  # pull_request:
+  # push:
+  #   branches:
+  #     #- main
+  #     - development
+  workflow_run:
+    workflows: ["Check and Lint"]
+    types:
+      - completed
+
+# # Only trigger, when the build workflow succeeded
+# on:
+#   workflow_run:
+#     workflows: ["CI build"]
+#     types:
+#       - completed
 
 name: Test with Code Coverage
 
