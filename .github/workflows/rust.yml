@@ -21,7 +21,8 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stabless
+          #toolchain: stabless
+          toolchain: stable
           override: true
       - name: Cargo Check 
         uses: actions-rs/cargo@v1
@@ -86,8 +87,12 @@ jobs:
       - name: Release Build
         run: cargo build --release
 
+      - name: Create Artifact Folder
+        run: mkdir -p target/release
+
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.PROJECT_NAME_UNDERSCORE }}
-          path: target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
+          #path: target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
+          path: target/release/*
