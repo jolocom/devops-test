@@ -1,4 +1,9 @@
 # Jolocom DevOps CI test
+# KotlinLearningMap
+[GITHUB-BADGE](https://github.com/jmk47912204/devops-test/workflows/android-master/badge.svg)
+
+[![Actions Status](https://github.com/jmk47912204/devops-test/workflows/Rust/badge.svg)](https://github.com/jmk47912204/devops-test/actions)
+
 ## Description
 Create CI, which will run unit tests, build with release configuration, collect platform specific binary libraries and publish them as release artefact.
 ## Detailed steps

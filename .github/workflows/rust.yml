@@ -41,6 +41,7 @@ jobs:
           toolchain: stable
           components: clippy
           override: true
+          
       - name: Clipy Check
         uses: actions-rs/clippy-check@v1
         if: ${{ success() }}
