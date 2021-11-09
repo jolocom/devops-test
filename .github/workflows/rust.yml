@@ -83,7 +83,7 @@ jobs:
         #   cargo install cargo2junit;
         #   cargo test -- -Z unstable-options --format json | cargo2junit > results.xml;
         run: |
-          cargo test --format json | cargo2junit > results.xml;
+          cargo test -- --format json | cargo2junit > results.xml;
 
       - name: Upload test results
         uses: EnricoMi/publish-unit-test-result-action@v1
