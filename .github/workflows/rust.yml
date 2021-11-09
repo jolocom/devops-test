@@ -16,7 +16,6 @@ jobs:
       PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, ubuntu-latest]
         include:
         - os: macos-latest
           TARGET: x86_64-apple-darwin
