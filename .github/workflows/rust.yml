@@ -122,6 +122,6 @@ jobs:
       PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
     runs-on: ubuntu-latest
     steps:
-      - run: cargo publish --token ${CRATES_TOKEN} --all
+      - run: cargo publish --token ${CRATES_TOKEN}
         env:
           CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
