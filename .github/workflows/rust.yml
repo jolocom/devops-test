@@ -75,15 +75,9 @@ jobs:
       - name: Cargo Build
         run: cargo build
 
-      - name: Create Artifact Folder
-        run: mkdir -p target/release
-
-      - name: Unit Test
-        # run: |
-        #   cargo install cargo2junit;
-        #   cargo test -- -Z unstable-options --format json | cargo2junit > results.xml;
+      - name: Unit Test        
         run: |
-          cargo test -- --format json | cargo2junit > results.xml;
+          cargo test -- -Z unstable-options --format json | cargo2junit > results.xml;
 
       - name: Upload test results
         uses: EnricoMi/publish-unit-test-result-action@v1
@@ -91,6 +85,9 @@ jobs:
           check_name: Test Results
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: results.xml
+
+      - name: Create Artifact Path
+        run: mkdir -p target/release
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
