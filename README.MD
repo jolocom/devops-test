@@ -1,6 +1,5 @@
 # Jolocom DevOps CI test
-# KotlinLearningMap
-[GITHUB-BADGE](https://github.com/jmk47912204/devops-test/workflows/android-master/badge.svg)
+[DEVOPS-TEST-BADGE](https://github.com/jmk47912204/devops-test/workflows/Rust/badge.svg)
 
 [![Actions Status](https://github.com/jmk47912204/devops-test/workflows/Rust/badge.svg)](https://github.com/jmk47912204/devops-test/actions)
 
