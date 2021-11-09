@@ -25,6 +25,6 @@ jobs:
           override: true
       - name: Cargo Check 
         uses: actions-rs/cargo@v1
-        if: ${{ success() }}
+        #if: ${{ success() }}
         with:
           command: check
