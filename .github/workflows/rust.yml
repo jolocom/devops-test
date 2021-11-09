@@ -78,10 +78,12 @@ jobs:
       - name: Create Artifact Folder
         run: mkdir -p target/release
 
-      - name: Generate test result
+      - name: Unit Test
+        # run: |
+        #   cargo install cargo2junit;
+        #   cargo test -- -Z unstable-options --format json | cargo2junit > results.xml;
         run: |
-          cargo install cargo2junit;
-          cargo test -- -Z unstable-options --format json | cargo2junit > results.xml;
+          cargo test --format json | cargo2junit > results.xml;
 
       - name: Upload test results
         uses: EnricoMi/publish-unit-test-result-action@v1
