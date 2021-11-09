@@ -1,5 +1,5 @@
 # Jolocom DevOps CI test
-[DEVOPS-TEST-BADGE(https://github.com/jmk47912204/devops-test/workflows/Rust/badge.svg)]
+[DEVOPS-TEST-BADGE](https://github.com/jmk47912204/devops-test/workflows/Rust/badge.svg)
 
 [![Actions Status](https://github.com/jmk47912204/devops-test/workflows/Rust/badge.svg)](https://github.com/jmk47912204/devops-test/actions)
 

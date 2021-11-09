@@ -72,6 +72,12 @@ jobs:
             target
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
 
+      - name: Release Build
+        run: cargo build --release
+
+      - name: Create Artifact Folder
+        run: mkdir -p target/release
+
       - name: Generate test result
         run: |
           cargo install cargo2junit;
@@ -84,15 +90,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: results.xml
 
-      - name: Release Build
-        run: cargo build --release
-
-      - name: Create Artifact Folder
-        run: mkdir -p target/release
-
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.PROJECT_NAME_UNDERSCORE }}
           #path: target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
           path: target/release/*
+
+      - run: cargo publish --token ${CRATES_TOKEN}
+        env:
+          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
