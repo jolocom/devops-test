@@ -11,12 +11,31 @@ env:
 
 jobs:
   CI:
+    runs-on: ${{ matrix.os }}
     env:
       PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, ubuntu-latest]
+        include:
+        - os: macos-latest
+          TARGET: x86_64-apple-darwin
+          COMPILER: clang
+          LINKER: clang
+
+        - os: ubuntu-latest
+          TARGET: armv7-unknown-linux-musleabihf
+          COMPILER: arm-linux-gnueabihf-gcc-5
+          LINKER: gcc-5-arm-linux-gnueabihf
+
+        - os: ubuntu-latest
+          TARGET: x86_64-unknown-linux-musl
+          COMPILER: gcc
+          LINKER: gcc
 
     steps:
       - uses: actions/checkout@v2
+      - run: echo ${{matrix.TARGET}}
       - name: Stable Toolchain
         uses: actions-rs/toolchain@v1
         with:
