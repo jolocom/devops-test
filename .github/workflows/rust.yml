@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  Formatter:
+  CI:
     env:
       PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
           toolchain: stable
           components: clippy
           override: true
-  
+
       - name: Clipy Check
         uses: actions-rs/clippy-check@v1
         if: ${{ success() }}
@@ -58,11 +58,6 @@ jobs:
           toolchain: nightly
           override: true
 
-  Cache:
-    env:
-      PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
-    runs-on: ubuntu-latest
-    steps:
       - name: Cache dependencies
         uses: actions/cache@v2
         env:
@@ -77,22 +72,12 @@ jobs:
             target
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
 
-  Build:
-    env:
-      PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
-    runs-on: ubuntu-latest
-    steps:
       - name: Release Build
         run: cargo build --release
 
       - name: Create Artifact Folder
         run: mkdir -p target/release
 
-  TestResults:
-    env:
-      PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
-    runs-on: ubuntu-latest
-    steps:
       - name: Generate test result
         run: |
           cargo install cargo2junit;
@@ -104,12 +89,7 @@ jobs:
           check_name: Test Results
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: results.xml
-  
-  ArtUpload:
-    env:
-      PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
-    runs-on: ubuntu-latest
-    steps:
+
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
         with:
@@ -117,11 +97,6 @@ jobs:
           #path: target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
           path: target/release/*
 
-  Publish:
-    env:
-      PROJECT_NAME_UNDERSCORE: DEVOPS-TEST
-    runs-on: ubuntu-latest
-    steps:
       - run: cargo publish --token ${CRATES_TOKEN}
         env:
           CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
