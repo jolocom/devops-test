@@ -97,6 +97,6 @@ jobs:
           #path: target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
           path: target/release/*
 
-      - run: cargo publish --token ${CRATES_TOKEN}
-        env:
-          CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
+      # - run: cargo publish --token ${CRATES_TOKEN}
+      #   env:
+      #     CRATES_TOKEN: ${{ secrets.CRATES_TOKEN }}
