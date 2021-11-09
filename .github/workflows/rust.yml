@@ -72,8 +72,8 @@ jobs:
             target
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
 
-      - name: Release Build
-        run: cargo build --release
+      - name: Cargo Build
+        run: cargo build
 
       - name: Create Artifact Folder
         run: mkdir -p target/release
