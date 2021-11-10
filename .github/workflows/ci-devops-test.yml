@@ -20,8 +20,8 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          #toolchain: stabless
-          toolchain: stable
+          toolchain: stabless
+          #toolchain: stable
           override: true
       - name: Cargo Check 
         uses: actions-rs/cargo@v1
