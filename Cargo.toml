@@ -1,14 +1,2 @@
 [workspace]
 members = ["lib1", "lib2", "lib3"]
-
-[package]
-authors = ["Manojkumar Jeganathan <jmk4791@gmail.com>"]
-description = "Jolocom DevOps Test"
-documentation = "https://docs.rs/hpke-rs-evercrypt"
-edition = "2021"
-license = "MPL-2.0"
-name = "devops-test"
-readme = "Readme.md"
-repository = "https://github.com/jmk47912204/devops-test"
-resolver = "2"
-version = "0.1.0"
