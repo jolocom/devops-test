@@ -1,8 +1,6 @@
 name: ci-devops-test
 
 on:
-  push:
-    branches: [ main, development ]
   pull_request:
     branches: [ main ]
 
