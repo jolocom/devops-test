@@ -12,26 +12,10 @@ env:
 
 jobs:
   CI:
-    strategy:
-      matrix:
-        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      # - name: Printing Output (Linux)
-      #   run: echo ${{matrix.os}}
-      #   if: matrix.os == 'ubuntu-latest'
-      
-      # - name: Printing Output (Linux)
-      #   run: echo ${{matrix.os}}
-      #   if: matrix.os == 'windows-latest'
-
-      # - name: Printing Output (Linux)
-      #   run: echo ${{matrix.os}}
-      #   if: matrix.os == 'macos-latest'
-
       - name: Stable Toolchain
         uses: actions-rs/toolchain@v1
         with:
@@ -39,21 +23,17 @@ jobs:
           #toolchain: stabless
           toolchain: stable
           override: true
-
       - name: Cargo Check 
         uses: actions-rs/cargo@v1
         with:
           command: check
-
       - name: Adding Rust Component
         run: rustup component add rustfmt
-
       - name: Rust Format check 
         uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: --all -- --check
-
       - name: Install Clippy Component
         uses: actions-rs/toolchain@v1
         if: ${{ success() }}
@@ -112,6 +92,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.PROJECT_NAME_UNDERSCORE }}
+          #path: target/release/${{ env.PROJECT_NAME_UNDERSCORE }}
           path: target/release/*
 
       # - run: cargo publish --token ${CRATES_TOKEN}
