@@ -3,6 +3,8 @@
 
 [![Actions Status](https://github.com/jmk47912204/devops-test/workflows/Rust/badge.svg)](https://github.com/jmk47912204/devops-test/actions)
 
+# jolocom-ci-devops-test-badge [![Actions Status: ci-devops-test](https://github.com/jmk47912204/devops-test/workflows/ci-devops-test/badge.svg)](https://github.com/jmk47912204/devops-test/actions?query=workflow%3A"ci-devops-test")
+
 ## Description
 Create CI, which will run unit tests, build with release configuration, collect platform specific binary libraries and publish them as release artefact.
 ## Detailed steps
