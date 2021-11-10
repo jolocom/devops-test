@@ -36,7 +36,6 @@ jobs:
           args: --all -- --check
       - name: Install Clippy Component
         uses: actions-rs/toolchain@v1
-        if: ${{ success() }}
         with:
           toolchain: stable
           components: clippy
@@ -72,7 +71,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('Cargo.lock') }}
 
       - name: Cargo Build
-        run: cargo build
+        run: cargo build --release
 
       - name: Unit Test        
         run: |
@@ -87,8 +86,10 @@ jobs:
 
       - name: Create Artifact Path
         run: mkdir -p target/release
+        if: ${{ success() }}
 
       - name: 'Upload Artifact'
+        if: ${{ success() }}
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.PROJECT_NAME_UNDERSCORE }}
