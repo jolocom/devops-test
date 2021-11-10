@@ -1,13 +1,12 @@
 [package]
 name = "lib2"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
 description = "Lib2 Package"
-license = "MIT OR Apache-2.0"
-homepage = "https://serde.rs/"
-documentation = "https://docs.rs/bitflags"
-repository = "https://github.com/rust-lang/cargo/"
-# readme = "README.md"
+authors = ["Manojkumar Jeganathan <jmk4791@gmail.com>"]
+documentation = "https://docs.rs/hpke-rs-evercrypt"
+license = "MPL-2.0"
+repository = "https://github.com/jmk47912204/devops-test"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
